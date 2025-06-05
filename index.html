@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pacific | Roblox Game and Community</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('Image-Background.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 1rem;
+      text-align: center;
+      animation: fadeIn 2s ease-in;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 3rem;
+      color: #25af51;
+      animation: slideDown 2s ease-out;
+    }
+
+    header p {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    nav {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 0.5rem 0;
+      text-align: center;
+    }
+
+    nav a {
+      color: #25af51;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-size: 1.2rem;
+      position: relative;
+    }
+
+    nav a:hover {
+      color: #fff;
+      animation: pulse 1s infinite;
+    }
+
+    nav a:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to right, rgba(93, 183, 65, 0), #5db741);
+      bottom: -5px;
+      left: 0;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease-out;
+    }
+
+    nav a:hover:after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    section {
+      margin: 2rem;
+      padding: 1rem;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 15px;
+      animation: fadeIn 2s ease-in;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      color: #25af51;
+    }
+
+    section p {
+      font-size: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.8rem 1.7rem;
+      background: #228B22;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 15px;
+      font-size: 1rem;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .button:hover {
+      background: #006400;
+      transform: scale(1.1);
+    }
+
+    .button:active {
+      top: 2px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-20px); }
+      to { transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Music -->
+  <audio autoplay loop>
+    <source src="Music-Background.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- Click Sound -->
+  <audio id="click-sound">
+    <source src="Sound-Click.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- Header -->
+  <header>
+    <img src="Image-Header.png" alt="Icon" />
+    <div>
+      <h1>Pacific</h1>
+      <p>Explore the tropical beauty of the Pacific experience!</p>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#about">About</a>
+    <a href="#discord">Discord</a>
+    <a href="#roblox">Roblox Group</a>
+    <a href="#youtube">YouTube</a>
+  </nav>
+
+  <!-- Sections -->
+  <section id="about">
+    <h2>About Pacific</h2>
+    <p>
+      Pacific is an innovative and dynamic Roblox group dedicated to providing
+      players with immersive and collaborative roleplay adventures. From unique
+      scenarios to engaging community events, Pacific is the place to thrive and connect.
+    </p>
+  </section>
+
+  <section id="discord">
+    <h2>Join Our Discord</h2>
+    <p>
+      Join our community of passionate players to exchange ideas, share strategies,
+      and stay in the loop with everything Pacific. Our Discord server is the central
+      hub for all things Pacific!
+    </p>
+    <a href="https://discord.gg/WQUaHFeyvC" class="button" onclick="playClickSound()">Join Discord</a>
+  </section>
+
+  <section id="roblox">
+    <h2>Join Our Roblox Group</h2>
+    <p>
+      Be a part of HighFly Corporation on Roblox! Collaborate with others, participate in events,
+      and showcase your skills in the game.
+    </p>
+    <a href="https://www.roblox.com/communities/35000132/HighFly-Corporation#!/about" class="button" onclick="playClickSound()">Visit Roblox Group</a>
+  </section>
+
+  <section id="youtube">
+    <h2>Subscribe to Our YouTube Channel</h2>
+    <p>
+      Don't miss out on the latest updates and exclusive content from Pacific. Dive into tutorials,
+      group highlights, and behind-the-scenes features today!
+    </p>
+    <a href="https://www.youtube.com/@HighFly-RBLX" class="button" onclick="playClickSound()">Visit YouTube Channel</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Pacific. All Rights Reserved.</p>
+  </footer>
+
+  <!-- JavaScript for click sound -->
+  <script>
+    function playClickSound() {
+      const clickSound = document.getElementById('click-sound');
+      clickSound.currentTime = 0;
+      clickSound.play();
+    }
+  </script>
+</body>
+</html>
