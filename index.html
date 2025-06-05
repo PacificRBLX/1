@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pacific | Roblox Game and Community</title>
   <style>
     body {
@@ -19,6 +19,11 @@
       padding: 1rem;
       text-align: center;
       animation: fadeIn 2s ease-in;
+    }
+
+    header img {
+      max-width: 150px;
+      height: auto;
     }
 
     header h1 {
@@ -57,7 +62,7 @@
       position: absolute;
       width: 100%;
       height: 2px;
-      background: linear-gradient(to right, rgba(93, 183, 65, 0), #5db741);
+      background: #25af51;
       bottom: -5px;
       left: 0;
       transform: scaleX(0);
@@ -66,6 +71,7 @@
     }
 
     nav a:hover:after {
+      background: linear-gradient(to right, rgba(93, 183, 65, 0), #5db741);
       transform: scaleX(1);
       transform-origin: left;
     }
@@ -120,6 +126,26 @@
       top: 2px;
     }
 
+    #mute-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background-color: rgba(0, 0, 0, 0.6);
+      border: none;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      z-index: 1000;
+    }
+
+    #mute-btn:hover {
+      background-color: #25af51;
+      transform: scale(1.1) rotate(5deg);
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
@@ -137,83 +163,72 @@
   </style>
 </head>
 <body>
-  <!-- Background Music -->
-  <audio autoplay loop>
+
+  <audio id="background-music" autoplay loop>
     <source src="Music-Background.mp3" type="audio/mpeg" />
   </audio>
 
-  <!-- Click Sound -->
   <audio id="click-sound">
     <source src="Sound-Click.mp3" type="audio/mpeg" />
   </audio>
 
-  <!-- Header -->
+  <button id="mute-btn" onclick="toggleMute()">🔊</button>
+
   <header>
-    <img src="Image-Header.png" alt="Icon" />
+    <img src="Image-Header.png" alt="Icon">
     <div>
       <h1>Pacific</h1>
       <p>Explore the tropical beauty of the Pacific experience!</p>
     </div>
   </header>
 
-  <!-- Navigation -->
   <nav>
     <a href="#about">About</a>
-    <a href="#discord">Discord</a>
-    <a href="#roblox">Roblox Group</a>
-    <a href="#youtube">YouTube</a>
+    <a href="https://discord.gg/Pa48WefKQd" onclick="playClickSound()">Discord</a>
+    <a href="https://www.roblox.com/groups/35000132/Pacific#!/about" onclick="playClickSound()">Roblox Group</a>
+    <a href="https://www.youtube.com/@Pacific-RBLX" onclick="playClickSound()">YouTube</a>
   </nav>
 
-  <!-- Sections -->
   <section id="about">
     <h2>About Pacific</h2>
-    <p>
-      Pacific is an innovative and dynamic Roblox group dedicated to providing
-      players with immersive and collaborative roleplay adventures. From unique
-      scenarios to engaging community events, Pacific is the place to thrive and connect.
-    </p>
+    <p>Pacific is an innovative and dynamic Roblox group dedicated to providing players with immersive and collaborative roleplay adventures. From unique scenarios to engaging community events, Pacific is the place to thrive and connect.</p>
   </section>
 
-  <section id="discord">
-    <h2>Join Our Discord</h2>
-    <p>
-      Join our community of passionate players to exchange ideas, share strategies,
-      and stay in the loop with everything Pacific. Our Discord server is the central
-      hub for all things Pacific!
-    </p>
-    <a href="https://discord.gg/WQUaHFeyvC" class="button" onclick="playClickSound()">Join Discord</a>
-  </section>
-
-  <section id="roblox">
-    <h2>Join Our Roblox Group</h2>
-    <p>
-      Be a part of HighFly Corporation on Roblox! Collaborate with others, participate in events,
-      and showcase your skills in the game.
-    </p>
-    <a href="https://www.roblox.com/communities/35000132/HighFly-Corporation#!/about" class="button" onclick="playClickSound()">Visit Roblox Group</a>
-  </section>
-
-  <section id="youtube">
-    <h2>Subscribe to Our YouTube Channel</h2>
-    <p>
-      Don't miss out on the latest updates and exclusive content from Pacific. Dive into tutorials,
-      group highlights, and behind-the-scenes features today!
-    </p>
-    <a href="https://www.youtube.com/@HighFly-RBLX" class="button" onclick="playClickSound()">Visit YouTube Channel</a>
-  </section>
-
-  <!-- Footer -->
   <footer>
     <p>© 2025 Pacific. All Rights Reserved.</p>
   </footer>
 
-  <!-- JavaScript for click sound -->
   <script>
+    const music = document.getElementById('background-music');
+    const clickSound = document.getElementById('click-sound');
+    const muteBtn = document.getElementById('mute-btn');
+
     function playClickSound() {
-      const clickSound = document.getElementById('click-sound');
       clickSound.currentTime = 0;
       clickSound.play();
     }
+
+    function toggleMute() {
+      if (music.volume > 0) {
+        fadeOut(music);
+        muteBtn.textContent = '🔇';
+      } else {
+        music.volume = 1;
+        muteBtn.textContent = '🔊';
+      }
+    }
+
+    function fadeOut(audio) {
+      const fadeAudio = setInterval(() => {
+        if (audio.volume > 0.05) {
+          audio.volume -= 0.05;
+        } else {
+          audio.volume = 0;
+          clearInterval(fadeAudio);
+        }
+      }, 100);
+    }
   </script>
+
 </body>
 </html>
