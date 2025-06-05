@@ -134,7 +134,7 @@
   </style>
 </head>
 <body>
-  <audio id="background-music" autoplay loop>
+  <audio id="background-music" loop>
     <source src="Music-Background.mp3" type="audio/mpeg" />
   </audio>
 
@@ -155,7 +155,7 @@
   <nav>
     <a href="#about" onclick="playClickSound()">About</a>
     <a href="https://discord.gg/Pa48WefKQd" onclick="playClickSound()">Discord</a>
-    <a href="https://www.roblox.com/groups/35000132/Pacific#!/about" onclick="playClickSound()">Roblox Group</a>
+    <a href="https://www.roblox.com/communities/33694362/Pacific-Resorts-RBLX#!/about" onclick="playClickSound()">Roblox Group</a>
     <a href="https://www.youtube.com/@Pacific-RBLX" onclick="playClickSound()">YouTube</a>
   </nav>
 
@@ -172,8 +172,8 @@
 
   <section>
     <h2>Join Our Roblox Group</h2>
-    <p>Be a part of Pacific on Roblox! Collaborate with others, participate in events, and showcase your skills in the game.</p>
-    <a href="https://www.roblox.com/groups/35000132/Pacific#!/about" class="button" onclick="playClickSound()">Visit Roblox Group</a>
+    <p>Be a part of Pacific Resorts on Roblox! Collaborate with others, participate in events, and showcase your skills in the game.</p>
+    <a href="https://www.roblox.com/communities/33694362/Pacific-Resorts-RBLX#!/about" class="button" onclick="playClickSound()">Visit Roblox Group</a>
   </section>
 
   <section>
@@ -190,6 +190,13 @@
     const music = document.getElementById('background-music');
     const clickSound = document.getElementById('click-sound');
     const muteBtn = document.getElementById('mute-btn');
+
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        music.volume = 1;
+        music.play().catch(e => console.log("Autoplay blocked:", e));
+      }, 1000);
+    });
 
     function playClickSound() {
       clickSound.currentTime = 0;
